@@ -15,5 +15,5 @@
 ## Spring Core Container
 - 스프링에서 가장 기본적이며 중요한 모듈 중 하나다.
 - 스프링에서 객체의 생성관 관리를 담당
-- **DI(Dependency Injection)**와 **IoC(Inversion of Control)** 개념이 구현되어 있어, 이를 이용해 코드의 **재사용성**과 **유지보수성**을 높일 수 있음
+- **DI(Dependency Injection)** 와 **IoC(Inversion of Control)** 개념이 구현되어 있어, 이를 이용해 코드의 **재사용성**과 **유지보수성**을 높일 수 있음
     
