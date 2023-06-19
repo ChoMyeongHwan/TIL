@@ -32,6 +32,3 @@
     |`@Service`|서비스 레이어, 비즈니스 로직을 가진 클래스 ex) Service Class|
     |`@Repository`|퍼시스턴스(persistence) 레이어, 영속성을 가지는 속성(파일, 데이터베이스)을 가진 클래스 ex) Data Access Object Class|
     |`@Configuration`|빈을 등록하는 설정 클래스|
-
-
-    
