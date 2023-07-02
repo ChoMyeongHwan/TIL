@@ -15,3 +15,20 @@
 - 클래스 레벨에 @DisplayNameGenerator를 붙이게 되면 언더바를 공백으로 처리하여 테스트 이름을 부여해줌
     * 단, @DisplayName과 중복 작성 시 @DisplayName에 부여한 테스트 이름이 우선권을 가짐
 - 각각의 테스트는 실행 순서를 작성 순서로 보장하지 않음
+
+## Lifecycle Annotation
+- 모든 테스트 메소드와 라이프사이클 관련 메소드는 abstract이면 안되고, **void** 형으로 작성
+- 접근제한자는 사용하지 않아도 되지만(default), private이면 안됨
+- 종류
+    * @BeforeAll
+        + 테스트가 실행되기 전 딱 한 번만 실행됨
+    * @BeforeEach
+        + 각각의 테스트 메소드가 실행되기 전 실행됨
+        + @Test, @RepeatedTest, @ParameterizedTest, @TestFactory가 실행되기 전에 동작
+        + 주로 테스트 하기 전에 필요한 목업 데이터를 미리 세팅해 줄 목적으로 사용
+    * @AfterEach
+        + 각각의 테스트 메소드가 동작한 직후 동작함
+        + @Test, @RepeatedTest, @ParameterizedTest, @TestFactory가 실행된 이후 동작
+        + 주로 단위 테스트들이 수행된 이후 사용한 자원을 해제할 목적으로 사용
+    + @AfterAll
+        + 모든 단위 테스트가 완전히 끝난 후 딱 한 번만 실행됨
