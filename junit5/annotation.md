@@ -57,3 +57,50 @@
 - @RepeatedTest()
     * 명시된 숫자로 얼마나 테스트를 반복할 것인지를 지정해서 사용
     * 반복된 테스트 메소드의 호출은 보통의 @Test 메소드들이랑 똑같이 동작
+
+## EnvironmentAnnotation
+- @EnabledOnOs & @DisabledOnOs
+```java
+    /* 특정 OS 환경에서만 테스트를 수행할 수 있음 */
+    @Test
+    // vlaue -> OS, disabledReason -> 사유 명시
+    @EnabledOnOs(value = OS.MAC, disabledReason = "맥에서만 테스트 실행")
+    public void testMAC() {}
+
+    @Test
+    @EnabledOnOs(value = {OS.WINDOWS, OS.LINUX}, disabledReason = "윈도우와 리눅스만 테스트 실행")
+    public void testWindowsAndLinux() {}
+
+    @Test
+    @DisabledOnOs(value = OS.WINDOWS, disabledReason = "윈도우 환경에서는 테스트를 무시")
+    public void testDisabledOnWindows() {}
+```
+
+- @EnabledOnJre & @DisabledOnJre
+```java
+    /* 특정 JRE 버전에서만 테스트 실행 */
+    @Test
+    @EnabledOnJre(value = JRE.JAVA_8, disabledReason = "JRE 1.8환경에서만 테스트 실행")
+    public void testJRE8() {}
+
+    @Test
+    @DisabledOnJre(value = JRE.JAVA_8)
+    public void testDisabledJRE8() {}
+
+    @Test
+    // min만 작성 시 min~최신버전까지, max만 작성 시 이전 버젼부터 max까지만 테스트
+    @EnabledForJreRange(min = JRE.JAVA_8, max = JRE.JAVA_11)
+    public void testFromJRE8ToJRE11() {}
+
+    @Test
+    @DisabledForJreRange(min = JRE.JAVA_8, max = JRE.JAVA_11)
+    public void testDisabledFromJRE8ToJRE11() {}
+```
+
+- @EnabledIfEnvironmentVariable &  @DisabledIfEnvironmentVariable
+    * @EnabledIfEnvironmentVariable : 일치하면 활성화, 나머지는 비활성화
+    * @DisabledIfEnvironmentVariable : 일치하면 비활성화, 나머지는 활성화
+    * 운영체제의 시스템 환경변수에 따라 테스트를 활성화 또는 비활성화 가능
+    * cmd에서 set 명령으로 시스템 환경변수 값을 확인 가능
+    * 시스템 변수의 이름은 대소문자를 구분하지 않지만 값은 구분함
+    * 예시 : @EnabledIfEnvironmentVariable(named = "username", matches="user")
