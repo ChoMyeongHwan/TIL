@@ -30,5 +30,30 @@
         + 각각의 테스트 메소드가 동작한 직후 동작함
         + @Test, @RepeatedTest, @ParameterizedTest, @TestFactory가 실행된 이후 동작
         + 주로 단위 테스트들이 수행된 이후 사용한 자원을 해제할 목적으로 사용
-    + @AfterAll
+    * @AfterAll
         + 모든 단위 테스트가 완전히 끝난 후 딱 한 번만 실행됨
+
+## Additional Annotation
+- @Disabled
+    * 해당 테스트를 무시할 때 사용하는 어노테이션
+    * JUnit4에서의 @Ignore와 동일한 기능을 제공
+- @Timeout(value = 1000, unit = TimeUnit.MILLISECONDS)
+    * 주어진 시간 안에 테스트가 끝나지 않으면 테스트가 실패함
+    * value에는 시간을 정수형으로, unit에는 사용할 시간 단위를 기술
+
+- @Tag
+    * 필터링
+        + Edit Configurations -> Debug/Run Configurations 창 왼쪽 상단에 + 버튼을 눌러서 JUnit을 추가 -> 필터 이름 설정 후 build and run 부분의 세 번째 드롭다운박스를 선택해서 Tags를 선택하고 필터링할 태그 이름을 입력 -> 필터링 된 테스트 실행
+    * 규칙
+        + 태그는 공백이나 null이 있으면 안됨
+        + , ( ) & ! | 포함하면 안됨
+
+- @Order
+    * 테스트 메소드는 실행 순서가 보장되지 않음
+    * 통합테스트 환경 등에서는 테스트의 순서가 중요한 경우가 있음
+    * 클래스 레벨에 @TestMethodOrder(MethodOrderer.OrderAnnotation.class) 어노테이션을 추가
+    * 클래스에 작성한 테스트 메소드의 순서는 MethodOrderer에 DisplayName, MethodName, OrderAnnotation, Random 등이 있음
+
+- @RepeatedTest()
+    * 명시된 숫자로 얼마나 테스트를 반복할 것인지를 지정해서 사용
+    * 반복된 테스트 메소드의 호출은 보통의 @Test 메소드들이랑 똑같이 동작
