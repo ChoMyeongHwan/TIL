@@ -19,6 +19,7 @@
     );
     ReactDOM.createRoot(document.getElementById('root')).render(element);
     ```
+    
 ### attribute
 - class 속성은 **className**이라는 속성명을 사용
 - inline 방식으로 style를 적용할 때 **JavaScript의 객체**를 활용할 수 있음
