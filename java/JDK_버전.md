@@ -75,20 +75,27 @@ sdk use java 11.0.3-open
 sdk use java 17.0.1-open
 ```
 
-### 6.2 윈도우에서의 JDK 버전 관리 - jEnv
+### 6.2 윈도우에서의 JDK 버전 관리 - PowerShell
 
-윈도우에서는 jEnv를 사용하여 JDK 버전을 관리할 수 있다. 
+윈도우에서는 PowerShell을 사용하여 JDK 버전을 관리할 수 있다.
 
-jEnv 설치:
+1. '명령 프롬프트'나 'PowerShell'을 열고, 아래 명령어를 입력하여 현재 시스템의 Java 버전을 확인
 
-- [jEnv 다운로드](https://www.jenv.be/)
+    ```bash
+    java -version
+    ```
 
-jEnv를 사용하여 JDK 버전을 관리하는 방법에 대해서는 아래의 링크를 참고하자.
+2. 원하는 JDK 버전으로 전환하기 위해서는 '환경 변수' 설정에서 'JAVA_HOME' 변수의 값을 원하는 JDK 버전이 설치된 경로로 변경
 
-- [Windows에서 여러 JDK(Java) 간 전환하는 방법](https://ichi.pro/ko/windowseseo-yeoleo-jdk-java-gan-e-jeonhwanhaneun-bangbeob-188808991195692)
+    ```bash
+    $env:JAVA_HOME="C:\Program Files\Java\jdk-17"
+    ```
+
+3. 이제 다시 'java -version' 명령어를 입력하여 변경된 Java 버전을 확인
 
 ## 7. 추가 참고 자료
 
 여러 JDK 버전을 관리하고 전환하는 방법에 대한 추가적인 정보는 아래의 블로그 링크에서 얻을 수 있다.
 
 - [컴퓨터 과학 학생 블로그](https://computer-science-student.tistory.com/467)
+- [Windows에서 여러 JDK(Java) 간 전환하는 방법](https://ichi.pro/ko/windowseseo-yeoleo-jdk-java-gan-e-jeonhwanhaneun-bangbeob-188808991195692)
